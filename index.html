@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+     \<style>
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+  --bg-main: #0f172a;
+  --bg-secondary: #0d1135;
+  --bg-card: rgba(30, 42, 63, 0.6);
+  --accent: #38bdf8;
+  --accent-hover: #0ea5e9;
+  --text-main: #f1f5f9;
+  --text-muted: #cbd5e1;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+
+}
+body {
+  letter-spacing: 0.3px;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.5px;
+}
+
+
+/* ===== SECTION GLOBAL ===== */
+section {
+  padding: 5rem 10%;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(80px);
+}
+
+body::before {
+  width: 600px;
+  height: 600px;
+  background: rgba(56,189,248,0.25);
+  top: -200px;
+  left: -200px;
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+body::after {
+  width: 500px;
+  height: 500px;
+  background: rgba(14,165,233,0.2);
+  bottom: -150px;
+  right: -150px;
+  animation: float 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(50px); }
+}
+
+/* ===== HEADER ===== */
+header {
+  padding: 1.5rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+header h2 span {
+  color: var(--accent);
+}
+
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  margin-left: 2rem;
+  transition: 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 90vh;
+
+  background: linear-gradient(
+      rgba(15,23,42,0.85),
+      rgba(15,23,42,0.85)
+    ),
+    url("https://images.unsplash.com/photo-1498050108023-c5249f4df085");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-img {
+  width: 130px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  border: 3px solid var(--accent);
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero span {
+  color: var(--accent);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  margin: 1rem 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(56,189,248,0.3);
+}
+
+/* ===== ABOUT ===== */
+#about {
+  text-align: center;
+}
+
+#about h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+#about p {
+  margin-bottom: 1.3rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== SKILLS ===== */
+.skills-rows {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skill-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.skill-box {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(30,41,59,0.7);
+  backdrop-filter: blur(12px);
+  padding: 1.8rem;
+  border-radius: 18px;
+  border: 1px solid rgba(56,189,248,0.2);
+  transition: 0.3s;
+}
+
+.skill-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(56,189,248,0.15);
+}
+
+.skill-box h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.skill-box p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ===== PROJECTS ===== */
+.projects-container {
+  margin-top: 3rem;
+  padding: 3rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.projects-triangle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.project3 {
+  grid-column: 1 / span 2;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--bg-card);
+  padding: 1.8rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text-main);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+
+.project-title {
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  text-align: center;
+}
+
+form {
+  margin-top: 2rem;
+  max-width: 500px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(30, 41, 59, 0.7);
+  color: white;
+}
+
+textarea {
+  resize: none;
+  height: 120px;
+}
+
+button {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .projects-triangle {
+    grid-template-columns: 1fr;
+  }
+
+  .project3 {
+    grid-column: auto;
+    max-width: 100%;
+  }
+}
+
+</style>
+  
+</head>
+<body>
+
+<header>
+  <h2>Hi, I'm <span>Joseph Penuel M. Intal</span></h2>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+ <img src="profile.jpg" alt="Joseph Penuel M. Intal" class="profile-img">
+  <h2>Hi, I'm <span>Joseph Penuel M. Intal</span></h2>
+  <p>A passionate Web Developer building modern and responsive websites.</p>
+  <div>
+    <a href="#projects" class="btn">View My Work</a>
+    <a href="resume.pdf" class="btn">Download Resume</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+
+  <div style="
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3rem;
+    align-items:center;
+    max-width:1100px;
+    margin:auto;
+  ">
+
+    <!-- Text Side -->
+    <div>
+      <p style="margin-bottom:1.2rem">
+        I'm a young developer currently in Grade 12 with a deep interest in computer science and software development.
+      </p>
+
+      <p style="margin-bottom:1.2rem">
+        I spend my time building projects, improving my coding skills, and exploring new technologies.
+      </p>
+
+      <p style="margin-bottom:1.2rem">
+        When I'm not programming, I enjoy riding sport bikes — a hobby that reflects my drive, focus, and love for performance.
+      </p>
+
+      <p>
+        I'm motivated to grow into a skilled software engineer and continuously push my limits.
+      </p>
+    </div>
+
+    <!-- Image Side -->
+    <div style="text-align:center">
+     <img 
+    src="data:image/webp;base64,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"
+    style="width:100%; max-width:500px; border-radius:18px; box-shadow:0 20px 40px rgba(0,0,0,0.4);"
+  >
+</div>
+  
+     </div>
+    </section>
+
+<section id="skills">
+  <h2>Skills</h2>
+
+  <div class="skills-rows">
+
+    <div class="skill-row">
+      <div class="skill-box">
+        <h3>HTML</h3>
+        <p>Semantic structure and accessible markup.</p>
+      </div>
+      <div class="skill-box">
+        <h3>CSS</h3>
+        <p>Modern layouts using Flexbox and Grid.</p>
+      </div>
+      <div class="skill-box">
+        <h3>Responsive Design</h3>
+        <p>Mobile-first development for all devices.</p>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-box">
+        <h3>JavaScript</h3>
+        <p>Interactive features and DOM manipulation.</p>
+      </div>
+      <div class="skill-box">
+        <h3>React</h3>
+        <p>Component-based UI with hooks and state management.</p>
+      </div>
+      <div class="skill-box">
+        <h3>Node.js</h3>
+        <p>Backend APIs and server-side development.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2 style="text-align:center">Projects</h2>
+
+  <div class="projects-container">
+
+    <div class="projects-triangle">
+
+      <!-- Project 1 -->
+      <a href="#" class="card project1">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+          style="width:100%;border-radius:10px;margin-bottom:1rem">
+
+        <h3 class="project-title">Personal Portfolio Website</h3>
+
+        <p class="project-desc">
+          Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript.
+        </p>
+      </a>
+
+      <!-- Project 2 -->
+      <a href="#" class="card project2">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
+          style="width:100%;border-radius:10px;margin-bottom:1rem">
+
+        <h3 class="project-title">Task Manager Web App</h3>
+
+        <p class="project-desc">
+          Interactive task management application using JavaScript and localStorage for data persistence.
+        </p>
+      </a>
+
+      <!-- Project 3 -->
+      <a href="#" class="card project3">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97"
+          style="width:100%;border-radius:10px;margin-bottom:1rem">
+
+        <h3 class="project-title">React Dashboard Project</h3>
+
+        <p class="project-desc">
+          Component-based dashboard built with React hooks and reusable UI architecture.
+        </p>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section id="contact" class="contact">
+  <h2>Contact Me</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  © 2026 Joseph Penuel M. Intal. Built with HTML, CSS & JavaScript.
+</footer>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(a => {
+      a.classList.remove("active");
+      if (a.getAttribute("href") === "#" + current) {
+        a.classList.add("active");
+      }
+    });
+  });
+ </Script>
+</body>
+</html>
